@@ -14,5 +14,6 @@
 - `git commit -m "summary"`: to add commit "summary" to all your added files
 - `git push`: push the commit to the remote github
 - `:+1:`
+emoji cheating sheet: https://www.webpagefx.com/tools/emoji-cheat-sheet/
 
 **Remember to push all your work before you leaving the desktop, that could reduce the conflicts when cooperate with peers**
