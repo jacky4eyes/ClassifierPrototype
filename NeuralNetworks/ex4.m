@@ -4,10 +4,10 @@ close all;
 clc;
 %% Parameters
 input_layer_size  = 400;    % Input Features
-hidden_layer_size = 25;     % Middle Layers: using matrix to represent the structure.
+hidden_layer_size = 40;     % Middle Layers: using matrix to represent the structure.
 num_labels = 10;            % Output Classes
-lambda = 3;                 % Regularization
-Iteration = 50;             % Iteration times
+lambda = 0;                 % Regularization
+Iteration = 150;             % Iteration times
 load('ex4data1.mat');       % load the trainning sample
 %% Code
 initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size);
