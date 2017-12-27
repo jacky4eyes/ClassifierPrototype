@@ -2,22 +2,16 @@ clear ; close all; clc
 fprintf('Start working\n')
 
 %% Example data
-load('dataexample.mat');
 % X & y: training set
 % Xval & yval: validation set
 % Xtest & ytest: testing set
-
+load('dataexample.mat');
 m = size(X, 1);         % record data dimension
-
-
-%% Train Linear Regression
-
-lambda = 0;
-[theta] = trainLinearReg([ones(m, 1) X], y, lambda);
 
 
 %% Learning Curve
 
+lambda = 0;
 [error_train, error_val] = learningCurve(X, y, Xval, yval, lambda);
 plot(1:m, error_train, 1:m, error_val);
 title(sprintf('Learning Curve (lambda = %f)', lambda));
@@ -44,54 +38,8 @@ for i = 1:length(lambda_vec)
 end
 
 
-% %% Implementation randomly selection (jacky's method)
-% 
-% randomly_select_number = size(X_poly,1);
-% error_train_record = zeros(randomly_select_number,1);
-% error_val_record = zeros(randomly_select_number,1);
-% lambda = 0.01;
-% repeat_times = 1;
-% for i = 1:repeat_times
-%     
-%     shuffle_index_train = randperm(size(X_poly,1),randomly_select_number);
-%     shuffle_index_val = randperm(size(X_poly_val,1),randomly_select_number);
-%     [error_train, error_val] = random_learningCurve(X_poly(shuffle_index_train,:), y(shuffle_index_train),...
-%         X_poly_val(shuffle_index_val,:), yval(shuffle_index_val), lambda);
-%     error_train_record = error_train_record + error_train/repeat_times;
-%     error_val_record = error_val_record + error_val/repeat_times;
-% end
-% 
-% figure;
-% title(['Shuffled selection training, Repeat times = ', num2str(repeat_times)]);
-% xlabel('Number of training examples');
-% ylabel('Error');
-% plot(1:randomly_select_number, error_train_record,...
-%     1:randomly_select_number, error_val_record);
-% 
-% 
-% %% Implementation randomly selection (kai's method)
-% 
-% randomly_select_number = size(X_poly,1);
-% error_train_record = zeros(randomly_select_number,1);
-% error_val_record = zeros(randomly_select_number,1);
-% lambda = 0.01;
-% repeat_times = 50;
-% 
-% for j = 1:randomly_select_number
-%     j
-% for i = 1:repeat_times
-%     shuffle_index_train = randperm(size(X_poly,1),j);
-%     shuffle_index_val = randperm(size(X_poly_val,1),j);
-%     [error_train, error_val] = random_learningCurve_kai(X_poly(shuffle_index_train,:), y(shuffle_index_train),...
-%         X_poly_val(shuffle_index_val,:), yval(shuffle_index_val), lambda);
-%     error_train_record(j) = error_train_record(j) + error_train/repeat_times;
-%     error_val_record(j) = error_val_record(j) + error_val/repeat_times;
-% end
-% end
-% 
-% figure;
-% title(['Shuffled selection training, Repeat times = ', num2str(repeat_times)]);
-% xlabel('Number of training examples');
-% ylabel('Error');
-% plot(1:randomly_select_number, error_train_record,...
-%     1:randomly_select_number, error_val_record);
+%% two types of randomising learning curve
+
+% jackyLearningCurve;
+
+KaiLearningCurve;
