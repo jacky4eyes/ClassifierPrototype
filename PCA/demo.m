@@ -1,14 +1,17 @@
+%% This file is for demo purpose
+
 %% Initialization
 clear ; close all; clc
-%% Control panel
-load ('ex7data1.mat');
-%% Demostration
 
+load ('exampledata.mat');
+
+
+%% 
 K = 1;
 
 [X_norm, mu, sigma] = featureNormalize(X);
 
-[Z, X_rec] = pca(X,K,0);
+[Z, X_rec] = pca(X,1,0);
 
 
 
